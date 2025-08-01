@@ -20,8 +20,15 @@ class MyApp extends StatelessWidget {
           title: Text('Tarefas', style: TextStyle(color: Colors.white)),
           backgroundColor: Color(0xFF2F80ED),
         ),
-        body: Column(
+        body: ListView(
+          scrollDirection: Axis.vertical,
           children: [
+            Task('Aprender Flutter'),
+            Task('Andar de bike'),
+            Task('Voar'),
+            Task('Aprender Flutter'),
+            Task('Andar de bike'),
+            Task('Voar'),
             Task('Aprender Flutter'),
             Task('Andar de bike'),
             Task('Voar'),
@@ -40,27 +47,39 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Stack(
-        children: [
-          Container(color: Colors.blue, height: 140),
-          Container(
-            color: Colors.white70,
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(color: Colors.black26, width: 72, height: 100),
-                Text(nome),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Icon(Icons.arrow_drop_up),
-                ),
-              ],
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Container(
+        color: Colors.white,
+        child: Stack(
+          children: [
+            Container(color: Colors.blue, height: 140),
+            Container(
+              color: Colors.white70,
+              height: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(color: Colors.black26, width: 72, height: 100),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      nome,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(fontSize: 24),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Spacer(),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Icon(Icons.arrow_drop_up),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
