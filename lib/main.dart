@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
+          leading: Container(),
           // Cabeçalho
           title: Text('Tarefas', style: TextStyle(color: Colors.white)),
           backgroundColor: Color(0xFF2F80ED),
@@ -78,23 +79,53 @@ class _TaskState extends State<Task> {
                         ),
                       ),
                       Spacer(),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            nivel++;
-                          });
-                          print(nivel);
-                        },
-                        child: Icon(Icons.arrow_drop_up),
+                      Container(
+                        width: 64,
+                        height: 64,
+                        margin: EdgeInsets.all(8),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              nivel++;
+                            });
+                            print(nivel);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(Icons.arrow_drop_up),
+                              Text('UP', style: TextStyle(fontSize: 12)),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
-                Text(
-                  'Nivel: $nivel',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: Container(
+                          width: 200,
+                          child: LinearProgressIndicator(
+                            value: nivel / 10,
+                            color: Colors.cyan,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 32),
+                        child: Text(
+                          'Nivel: $nivel',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                LinearProgressIndicator(),
               ],
             ),
           ],
