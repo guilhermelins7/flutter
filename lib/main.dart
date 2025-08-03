@@ -24,15 +24,51 @@ class MyApp extends StatelessWidget {
         body: ListView(
           scrollDirection: Axis.vertical,
           children: [
-            Task('Aprender Flutter'),
-            Task('Andar de bike'),
-            Task('Voar'),
-            Task('Aprender Flutter'),
-            Task('Andar de bike'),
-            Task('Voar'),
-            Task('Aprender Flutter'),
-            Task('Andar de bike'),
-            Task('Voar'),
+            Task(
+              'Aprender Flutter',
+              'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
+              3,
+            ),
+            Task(
+              'Andar de bike',
+              'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
+              2,
+            ),
+            Task(
+              'Voar',
+              'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
+              4,
+            ),
+            Task(
+              'Aprender Flutter',
+              'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
+              3,
+            ),
+            Task(
+              'Andar de bike',
+              'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
+              2,
+            ),
+            Task(
+              'Voar',
+              'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
+              4,
+            ),
+            Task(
+              'Aprender Flutter',
+              'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
+              3,
+            ),
+            Task(
+              'Andar de bike',
+              'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
+              2,
+            ),
+            Task(
+              'Voar',
+              'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
+              4,
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(onPressed: () {}),
@@ -43,7 +79,9 @@ class MyApp extends StatelessWidget {
 
 class Task extends StatefulWidget {
   final String nome; // Imutável após ser definida, comum em StatelessWidget.
-  const Task(this.nome, {super.key});
+  final String foto;
+  final int dificuldade;
+  const Task(this.nome, this.foto, this.dificuldade, {super.key});
 
   @override
   State<Task> createState() => _TaskState();
@@ -68,14 +106,67 @@ class _TaskState extends State<Task> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(color: Colors.black26, width: 72, height: 100),
                       Container(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          widget.nome,
-                          textAlign: TextAlign.start,
-                          style: TextStyle(fontSize: 24),
-                          overflow: TextOverflow.ellipsis,
+                        color: Colors.black26,
+                        width: 72,
+                        height: 100,
+                        child: Image.network(widget.foto, fit: BoxFit.cover),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                widget.nome,
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 24),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: widget.dificuldade >= 1
+                                      ? Colors.blue
+                                      : Colors.blue[200],
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: widget.dificuldade >= 2
+                                      ? Colors.blue
+                                      : Colors.blue[200],
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: widget.dificuldade >= 3
+                                      ? Colors.blue
+                                      : Colors.blue[200],
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: widget.dificuldade >= 4
+                                      ? Colors.blue
+                                      : Colors.blue[200],
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: widget.dificuldade >= 5
+                                      ? Colors.blue
+                                      : Colors.blue[200],
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                       Spacer(),
@@ -111,7 +202,9 @@ class _TaskState extends State<Task> {
                         child: Container(
                           width: 200,
                           child: LinearProgressIndicator(
-                            value: nivel / 10,
+                            value: widget.dificuldade > 0
+                                ? (nivel / widget.dificuldade) / 10
+                                : 1,
                             color: Colors.cyan,
                           ),
                         ),
