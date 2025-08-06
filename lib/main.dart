@@ -97,7 +97,13 @@ class _TaskState extends State<Task> {
         color: Colors.white,
         child: Stack(
           children: [
-            Container(color: Colors.blue, height: 140),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.blue,
+              ),
+              height: 140,
+            ),
             Column(
               children: [
                 Container(
@@ -107,10 +113,16 @@ class _TaskState extends State<Task> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        color: Colors.black26,
                         width: 72,
                         height: 100,
-                        child: Image.network(widget.foto, fit: BoxFit.cover),
+                        decoration: BoxDecoration(
+                          color: Colors.black26,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(widget.foto, fit: BoxFit.cover),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 8),
