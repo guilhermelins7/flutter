@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool opacidade = true;
 
   @override
   Widget build(BuildContext context) {
@@ -21,57 +28,68 @@ class MyApp extends StatelessWidget {
           title: Text('Tarefas', style: TextStyle(color: Colors.white)),
           backgroundColor: Color(0xFF2F80ED),
         ),
-        body: ListView(
-          scrollDirection: Axis.vertical,
-          children: [
-            Task(
-              'Aprender Flutter',
-              'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
-              3,
-            ),
-            Task(
-              'Andar de bike',
-              'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
-              2,
-            ),
-            Task(
-              'Voar',
-              'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
-              4,
-            ),
-            Task(
-              'Aprender Flutter',
-              'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
-              3,
-            ),
-            Task(
-              'Andar de bike',
-              'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
-              2,
-            ),
-            Task(
-              'Voar',
-              'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
-              4,
-            ),
-            Task(
-              'Aprender Flutter',
-              'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
-              3,
-            ),
-            Task(
-              'Andar de bike',
-              'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
-              2,
-            ),
-            Task(
-              'Voar',
-              'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
-              4,
-            ),
-          ],
+        body: AnimatedOpacity(
+          opacity: opacidade ? 1.0 : 0,
+          duration: Duration(milliseconds: 1000),
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            children: [
+              Task(
+                'Aprender Flutter',
+                'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
+                3,
+              ),
+              Task(
+                'Andar de bike',
+                'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
+                2,
+              ),
+              Task(
+                'Voar',
+                'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
+                4,
+              ),
+              Task(
+                'Aprender Flutter',
+                'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
+                3,
+              ),
+              Task(
+                'Andar de bike',
+                'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
+                2,
+              ),
+              Task(
+                'Voar',
+                'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
+                4,
+              ),
+              Task(
+                'Aprender Flutter',
+                'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
+                3,
+              ),
+              Task(
+                'Andar de bike',
+                'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
+                2,
+              ),
+              Task(
+                'Voar',
+                'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
+                4,
+              ),
+            ],
+          ),
         ),
-        floatingActionButton: FloatingActionButton(onPressed: () {}),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              opacidade = !opacidade;
+            });
+          },
+          child: Icon(Icons.remove_red_eye),
+        ),
       ),
     );
   }
