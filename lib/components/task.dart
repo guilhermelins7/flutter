@@ -15,6 +15,10 @@ class _TaskState extends State<Task> {
   int nivel = 0;
   @override
   Widget build(BuildContext context) {
+    double nivelTotal = widget.dificuldade > 0
+        ? (nivel / widget.dificuldade) / 10
+        : 1;
+    print('Nivel total: $nivelTotal');
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: Container(
@@ -24,7 +28,7 @@ class _TaskState extends State<Task> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Colors.blue,
+                color: nivelTotal < 1 ? Colors.blue : Colors.red,
               ),
               height: 140,
             ),
@@ -100,9 +104,7 @@ class _TaskState extends State<Task> {
                         child: SizedBox(
                           width: 200,
                           child: LinearProgressIndicator(
-                            value: widget.dificuldade > 0
-                                ? (nivel / widget.dificuldade) / 10
-                                : 1,
+                            value: nivelTotal,
                             color: Colors.cyan,
                           ),
                         ),
