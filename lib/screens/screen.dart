@@ -25,51 +25,10 @@ class _ScreenState extends State<Screen> {
         child: ListView(
           scrollDirection: Axis.vertical,
           children: [
-            Task(
-              'Aprender Flutter',
-              'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
-              3,
-            ),
-            Task(
-              'Andar de bike',
-              'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
-              2,
-            ),
-            Task(
-              'Voar',
-              'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
-              4,
-            ),
-            Task(
-              'Aprender Flutter',
-              'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
-              3,
-            ),
-            Task(
-              'Andar de bike',
-              'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
-              2,
-            ),
-            Task(
-              'Voar',
-              'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
-              4,
-            ),
-            Task(
-              'Aprender Flutter',
-              'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
-              3,
-            ),
-            Task(
-              'Andar de bike',
-              'https://hips.hearstapps.com/runnersworld-uk/i/15829/cyclingrunning.jpg',
-              2,
-            ),
-            Task(
-              'Voar',
-              'https://www.robertotranjan.com.br/wp-content/uploads/Voe-e-deixe-Voar.jpg',
-              4,
-            ),
+            Task('Aprender Flutter', 'assets/images/flutter.png', 3),
+            Task('Andar de bike', 'assets/images/bike.jpg', 2),
+            Task('Voar', 'assets/images/fly.jpg', 4),
+            SizedBox(height: 80),
           ],
         ),
       ),
