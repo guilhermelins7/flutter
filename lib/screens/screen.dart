@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_flutter/task.dart';
+import 'package:app_flutter/components/task.dart';
 
 class Screen extends StatefulWidget {
   const Screen({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_flutter/difficulty.dart';
+import 'package:app_flutter/components/difficulty.dart';
 
 class Task extends StatefulWidget {
   final String nome; // Imutável após ser definida, comum em StatelessWidget.
@@ -77,7 +77,7 @@ class _TaskState extends State<Task> {
                             setState(() {
                               nivel++;
                             });
-                            print(nivel);
+                            // print(nivel);
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,7 +97,7 @@ class _TaskState extends State<Task> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 8),
-                        child: Container(
+                        child: SizedBox(
                           width: 200,
                           child: LinearProgressIndicator(
                             value: widget.dificuldade > 0
