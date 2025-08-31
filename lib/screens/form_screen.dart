@@ -147,6 +147,11 @@ class _FormScreenState extends State<FormScreen> {
                           print(
                             'Conteúdo do contoller imagem: ${imageController.text}',
                           );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Salvando nova tarefa."),
+                            ),
+                          );
                         }
                       },
                       child: Text('Adicionar'),
